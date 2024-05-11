@@ -30,7 +30,7 @@ clear
 #######################################################################################################################
 
 # Mandatory static user input to determine versions
-    VERSION=""               # "" = snapshot or enter specifc version
+    VERSION=""               # Blank "" triggers user prompt for a specifc OWRT version or snapshot.
     TARGET="bcm27xx"         # Set the CPU build target, bcm27xx is the value for Raspi 3 & 4
     ARCH="bcm2711"           # Set to ARCH=bcm2710 for Raspi3 or ARCH=bcm2711 for Rapi4 
     IMAGE_PROFILE="rpi-4"    # Set to rpi-3 or rpi-4 | For available profiles run $SOURCE_DIR/make info
