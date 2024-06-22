@@ -4,6 +4,20 @@
 # David Harrop
 # February 2024
 #######################################################################################################################
+# ADD YOUR CUSTOM PACKAGE RECIPE BELOW
+#######################################################################################################################
+
+    CUSTOM_PACKAGES="-wpad-basic-mbedtls wpad-mbedtls -dnsmasq dnsmasq-full \
+    auc curl luci luci-app-attendedsysupgrade luci-app-mwan3 luci-app-sqm luci-app-travelmate mwan3 nano qrencode sqm-scripts sqm-scripts-extra tcpdump travelmate \
+    kmod-usb2 kmod-usb3 kmod-usb-core usbutils kmod-gpio-button-hotplug \
+    usbmuxd libimobiledevice kmod-usb-net kmod-usb-net-rndis kmod-usb-net-ipheth \
+    kmod-rt2800-lib kmod-rt2800-usb kmod-rt2x00-lib kmod-rt2x00-usb" 
+
+    # 1st line above contains necessary substituted dns & wifi crypto base packages (don't change)
+    # 2nd line above contains required system packages (don't change)
+    # 3rd line above contains required usb support packages (don't change)
+    # 4th line above contains iPhone & Android tether packages (don't change)
+    # 5th line above contains example usb device packages for the common RTL8812 chipset.  (Optionally remove this & add your specific usb wifi chipset packages here)
 
 clear
 
@@ -35,7 +49,7 @@ if ! id -nG "$USER" | grep -qw "sudo"; then
     exit 1
 fi
 
-# Trigger a prompt for sudo so it is used only where needed
+# Trigger a prompt for sudo for admin privileges as needed
 echo
 echo -e "${CYAN}Script requires sudo privileges for some actions${NC}"
 echo
@@ -44,23 +58,6 @@ echo
 echo -e "${CYAN}Checking for curl...${NC}"
 sudo apt-get update -qq && sudo apt-get install curl -qq -y
 clear
-
-#######################################################################################################################
-# ADD YOUR CUSTOM PACKAGE RECIPE HERE
-#######################################################################################################################
-
-# Package Selections. Provide your specific recipe of custom OWRT packages for the custom build here.
-    CUSTOM_PACKAGES="-wpad-basic-mbedtls wpad-mbedtls -dnsmasq dnsmasq-full \
-    auc curl luci luci-app-attendedsysupgrade luci-app-mwan3 luci-app-sqm luci-app-travelmate mwan3 nano qrencode sqm-scripts sqm-scripts-extra tcpdump travelmate \
-    kmod-usb2 kmod-usb3 kmod-usb-core usbutils kmod-gpio-button-hotplug \
-    usbmuxd libimobiledevice kmod-usb-net kmod-usb-net-rndis kmod-usb-net-ipheth \
-    kmod-rt2800-lib kmod-rt2800-usb kmod-rt2x00-lib kmod-rt2x00-usb" 
-
-    # 1st line above contains necessary substituted dns & wifi crypto base packages
-    # 2nd line above contains required system packages 
-    # 3rd line above contains required usb support packages
-    # 4th line above contains iPhone & Android tether packages. Add any extra usb ethernet adapter chipset packages here 
-    # 5th line above contains RTL8812 usb driver test packages. Remove & add your specific usb wifi chipset packages here
 
 #######################################################################################################################
 # User input variables
