@@ -1,7 +1,7 @@
 ## OpenWRT Raspi travel router build script 
 ### Multi-WAN tethering plus hotel captive portal auth & VPN support.
 
-**This OpenWRT image build script & supplied configuration files will produce a Raspberry Pi 3 or 4 travelrouter flash image supporting:**
+**This OpenWRT build script & configuration file creates a Raspberry Pi 3 or 4 image supporting:**
  - **Multiple WAN connection options:**
    - Wifi as WAN client
    - Built-in Ethernet as WAN
