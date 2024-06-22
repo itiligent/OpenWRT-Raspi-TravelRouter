@@ -8,8 +8,8 @@
    - iPhone tethered WAN
    - Android tethered WAN
    - Automatic WAN failover if multiple WAN connections exist. (Load balancing is also possible but not default).
-- **Packet TTL fixes to stealth downstream shared devices (useful for carrier plans that throttle if tethering is detected)**
-- **The "Travelmate" package for captive portal piggyback support, wifi client settings GUI management and VPN termination.** 
+- **Packet TTL fixes to hide device sharing from upstream carriers**
+- **OpenWRT extended GUI with "Travelmate" captive portal/VPN integration.** 
 
 ## Instructions
 
