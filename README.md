@@ -1,5 +1,5 @@
 ## OpenWRT Raspi travel router build script 
-### multi-WAN via Wifi, Ethernet, Android or iPhone piggyback options plus hotel captive portal auth & VPN support.
+### Multi-WAN tethering via Wifi, Ethernet, Android or iPhone plus hotel captive portal auth & VPN support.
 
 **This OpenWRT image build script & supplied configuration files will produce a Raspberry Pi 3 or 4 travelrouter flash image supporting:**
  - **Multiple WAN connection options:**
