@@ -106,6 +106,7 @@ fi
 #######################################################################################################################
 # Begin script build actions
 #######################################################################################################################
+
 # Clear out any previous builds
     rm -rf "${BUILD_ROOT}"
     rm -rf "${SOURCE_DIR}"
@@ -124,9 +125,25 @@ fi
 
 # Install OWRT build system dependencies for recent Ubuntu/Debian.
 # See here for other distro dependencies: https://openwrt.org/docs/guide-developer/toolchain/install-buildsystem
-    sudo apt-get update  2>&1 | tee -a ${BUILD_LOG}
+
+# Get the Python 3 version
+PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
+
+# Split the Python3 version into major, minor, and patch components
+IFS='.' read -r -a VERSION_PARTS <<< "$PYTHON_VERSION"
+MAJOR=${VERSION_PARTS[0]}
+MINOR=${VERSION_PARTS[1]}
+
+# Compare the distro Python3 version and install the correct build dependencies
+if (( MAJOR < 3 )) || (( MAJOR == 3 && MINOR <= 11 )); then
+    echo "Python version is less than or equal to 3.11"
     sudo apt-get install -y build-essential clang flex bison g++ gawk gcc-multilib g++-multilib \
-    gettext git libncurses-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget qemu-utils 2>&1 | tee -a ${BUILD_LOG}
+    gettext git libncurses5-dev libssl-dev python3-distutils python3-setuptools rsync unzip zlib1g-dev file wget qemu-utils zstd  2>&1 | tee -a ${BUILD_LOG}
+else
+    echo "Python version is 3.12 or above"
+	sudo apt-get install -y build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev \
+    python3-setuptools rsync swig unzip zlib1g-dev file wget 2>&1 | tee -a ${BUILD_LOG}
+fi
 
 # Download the image builder source if we haven't already
 if [ ! -f "${BUILDER##*/}" ]; then
