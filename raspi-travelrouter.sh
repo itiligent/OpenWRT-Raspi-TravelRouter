@@ -106,12 +106,32 @@ fi
 # Setup the image builder working environment
 #######################################################################################################################
 
-# Dynamically create the OpenWRT download link
-if [[ ${VERSION} != "" ]]; then
-    BUILDER="https://downloads.openwrt.org/releases/${VERSION}/targets/${TARGET}/${ARCH}/openwrt-imagebuilder-${VERSION}-${TARGET}-${ARCH}.Linux-x86_64.tar.xz"
+# Dynamically create the OpenWRT download link whilst also supporting legacy version imagebuilder download compression formats
+if [[ -n ${VERSION} ]]; then
+    BASE_URL="https://downloads.openwrt.org/releases/${VERSION}/targets/${TARGET}/${ARCH}"
+    BUILDER_PREFIX="openwrt-imagebuilder-${VERSION}-${TARGET}-${ARCH}.Linux-x86_64.tar"
 else
-    BUILDER="https://downloads.openwrt.org/snapshots/targets/${TARGET}/${ARCH}/openwrt-imagebuilder-${TARGET}-${ARCH}.Linux-x86_64.tar.zst" # Current snapshot
+    BASE_URL="https://downloads.openwrt.org/snapshots/targets/${TARGET}/${ARCH}"
+    BUILDER_PREFIX="openwrt-imagebuilder-${TARGET}-${ARCH}.Linux-x86_64.tar"
 fi
+
+BUILDER_XZ="${BASE_URL}/${BUILDER_PREFIX}.xz"
+BUILDER_ZST="${BASE_URL}/${BUILDER_PREFIX}.zst"
+
+# Try downloading .zst first, fallback to .xz if .zst is unavailable
+if curl --head --silent --fail "${BUILDER_ZST}" >/dev/null; then
+    BUILDER="${BUILDER_ZST}"
+elif curl --head --silent --fail "${BUILDER_XZ}" >/dev/null; then
+    BUILDER="${BUILDER_XZ}"
+else
+    echo
+    echo "    Error: Could not find a valid image builder file for OpenWRT version ${VERSION:-snapshot}."
+    echo
+    exit 1
+fi
+
+echo
+echo "    Using image builder: ${BUILDER}"
 
 # Configure the build paths
 SOURCE_FILE="${BUILDER##*/}" # Separate the tar.xz file name from the source download link
