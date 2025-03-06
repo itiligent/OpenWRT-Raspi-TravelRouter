@@ -57,7 +57,8 @@ You can add any number of other OpenWRT packages in the `CUSTOM_PACKGES` section
 
 ### **Step 6.** 
 
-Run the script as sudo and follow the prompts: `sudo ./raspi-travelrouter.sh`. When prompted to add custom OpenWRT config files, copy the _**unzipped**_ contents of `base-travelrouter-raspi.tar.gz` to  `$(pwd)/openwrt_inject_files` and hit enter to start the build. 
+Run the script and follow the prompts: `./raspi-travelrouter.sh`. You will be prompted for sudo, and then prompted to add custom OpenWRT config files. Copy the _**unzipped**_ contents of `base-travelrouter-raspi.tar.gz` to the (automatically created) path  `$(pwd)/openwrt_inject_files` and hit enter to start the build. 
+
 
 ---
 
