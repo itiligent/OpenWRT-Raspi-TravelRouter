@@ -8,7 +8,7 @@
 #######################################################################################################################
 
     CUSTOM_PACKAGES="-wpad-basic-mbedtls wpad-mbedtls -dnsmasq dnsmasq-full \
-    auc curl luci luci-app-attendedsysupgrade luci-app-mwan3 luci-app-sqm luci-app-travelmate mwan3 nano qrencode sqm-scripts tcpdump travelmate \
+    curl luci luci-app-mwan3 luci-app-sqm luci-app-travelmate mwan3 nano qrencode sqm-scripts tcpdump travelmate \
     kmod-usb2 kmod-usb3 kmod-usb-core usbutils kmod-gpio-button-hotplug \
     usbmuxd libimobiledevice kmod-usb-net kmod-usb-net-rndis kmod-usb-net-ipheth \
     kmod-rt2800-lib kmod-rt2800-usb kmod-rt2x00-lib kmod-rt2x00-usb" 
