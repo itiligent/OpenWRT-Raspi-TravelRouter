@@ -55,7 +55,7 @@ echo -e "${CYAN}Script requires sudo privileges for some actions${NC}"
 echo
 sudo sudo -v
 echo
-echo -e "${CYAN}Checking for curl...${NC}"
+echo -e "${CYAN}Checking for curl and querying latest OpenWRT stable build version...${NC}"
 sudo apt-get update -qq && sudo apt-get install curl -qq -y
 clear
 
