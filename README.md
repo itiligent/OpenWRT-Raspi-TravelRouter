@@ -17,27 +17,24 @@
 
 Research and obtain a Linux compatible USB Wifi adapter **with a chipset that supports _"AP mode"_**. 
 
+To confirm that the chipset of your USB wifi adapter is supported in OpenWRT: 
+
+- _Search https://forum.openwrt.org to confirm and obtain the correct package name(s) of the OpenWRT wifi chipset packages required._
+- _To learn more about USB wifi adapters with Linux/OpenWRT & AP mode support see here: [https://github.com/morrownr/USB-WiFi](https://github.com/morrownr/USB-WiFi)._
+
 _(Built-in Raspi radio supports AP Mode and will be used for hotel Wifi piggyback, a second USB wifi dongle also supporting AP Mode will be needed to service Wifi clients)._
 
 ---
 
 ### **Step 2.** 
 
-Next confirm that the chipset of your USB wifi adapter is supported in OpenWRT: 
-
-- _Search https://forum.openwrt.org to confirm and obtain the correct package name(s) of the OpenWRT wifi chipset packages required._
-- _To learn more about USB wifi adapters with Linux/OpenWRT & AP mode support see here: [https://github.com/morrownr/USB-WiFi](https://github.com/morrownr/USB-WiFi)._
-
----
-
-### **Step 3.** 
   -  Download `raspi-travelrouter.sh` script and make it executable: `chmod +x raspi-travelrouter.sh`. 
        
    - Download base-travelrouter-raspi.tar.gz and extract the contents.
 
 ---
 
-### **Step 4.** 
+### **Step 3.** 
 
 Adjust the `ARCH=` & `IMAGE_PROFILE=` sections of `raspi-travelrouter.sh` to suit your Raspi hardware (script defaults build for Raspi 4).
    ```
@@ -46,23 +43,23 @@ Adjust the `ARCH=` & `IMAGE_PROFILE=` sections of `raspi-travelrouter.sh` to sui
    ``` 
 ---
 
-### **Step 5.** 
+### **Step 4.** 
 
-On the last line of the `CUSTOM_PACKAGES` section at the top of the `raspi-travelrouter.sh` script, add the USB device driver package names you confirmed in Step 2 above. _(The USB chipset packages included in the default script are examples and can be removed. See script comments for more)._ 
+On the last line of the `CUSTOM_PACKAGES` section at the top of the `raspi-travelrouter.sh` script, add the USB device driver package names you confirmed in Step 1 above. _(The USB chipset packages included in the default script are examples and can be removed. See script comments for more)._ 
 
 You can add any number of other OpenWRT packages in the `CUSTOM_PACKGES` section to create your own custom travel-router recipe.
 
 ---
 
 
-### **Step 6.** 
+### **Step 5.** 
 
 Run the script and follow the prompts: `./raspi-travelrouter.sh`. You will be prompted for sudo, and then prompted to add custom OpenWRT config files. Copy the _**unzipped**_ contents of `base-travelrouter-raspi.tar.gz` to the (automatically created) path  `$(pwd)/openwrt_inject_files` and hit enter to start the build. 
 
 
 ---
 
-### **Step 7.** 
+### **Step 6.** 
 
 When the OpenWRT build has completed, several newly built firmwares can be found under `$(pwd)/firmware_images`. 
 
@@ -70,7 +67,7 @@ When the OpenWRT build has completed, several newly built firmwares can be found
 
 ---
 
-### **Step 8.** 
+### **Step 7.** 
 
 After first boot give your Raspi a few minutes to settle before trying to connect to the default "OpentWRT" SSID (no password). 
 
@@ -81,7 +78,7 @@ When connected, browse to http://10.1.10.1 to reach the OpenWRT Luci GUI. Use Lu
 
 ---
 
-### **Step 9.** 
+### **Step 8.** 
 
 Optional. If you wire a power button across gpio_pin3 (Pin5) and any ground pin, adding `dtoverlay=gpio-shutdown,gpio_pin=3` to `/boot/config.txt` enables both power ON and SHUTDOWN functionality.
 
