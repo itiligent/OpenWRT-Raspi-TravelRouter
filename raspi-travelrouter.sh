@@ -16,7 +16,7 @@
     # 1st line above contains necessary substituted dns & wifi crypto base packages (don't change)
     # 2nd line above contains required system packages (don't change)
     # 3rd line above contains required usb support packages (don't change)
-    # 4th line above contains iPhone & Android tether packages (don't change)
+    # 4th line above contains iPhone & Android tether packages (don't change, if Andriod not working try adding kmod-usb-net-cdc-ether or kmod-usb-net-cdc-ether)
     # 5th line above contains example usb device packages for the common RTL8812 chipset.  (Optionally remove this & add your specific usb wifi chipset packages here)
 
 clear
@@ -69,14 +69,15 @@ clear
 # User input variables
 #######################################################################################################################
 
-# Mandatory static user input to determine versions
+# Mandatory user input
     VERSION=""               # Blank "" triggers user prompt for a specifc OWRT version or snapshot.
-    TARGET="bcm27xx"         # Set the CPU build target, bcm27xx is the value for Raspi 3 & 4
-    ARCH="bcm2711"           # Set to ARCH=bcm2710 for Raspi3 or ARCH=bcm2711 for Rapi4 
-    IMAGE_PROFILE="rpi-4"    # Set to rpi-3 or rpi-4 | For available profiles run $SOURCE_DIR/make info
+    TARGET="bcm27xx"         # Set the CPU build target, bcm27xx is the value for Raspi 3, 4 & 5
+    ARCH="bcm2711"           # Set to ARCH="bcm2710" for Raspi3, ARCH="bcm2711" for Raspi 4, ARCH="bcm2712" for Raspi 5
+    IMAGE_PROFILE="rpi-4"    # Set to rpi-3, rpi-4 or rpi-5 | For available profiles run $SOURCE_DIR/make info
     RELEASE_URL="https://downloads.openwrt.org/releases/" # Where to obtain latest stable version number
     BUILD_LOG="$(pwd)/build.log"
     IMAGE_TAG=""             # ID tag is added to the completed image filename to uniquely identify the built image(s)
+
   
 #######################################################################################################################
 # Script prompt variables - do not edit unless expert
