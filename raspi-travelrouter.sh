@@ -42,6 +42,12 @@ if ! command -v sudo &> /dev/null; then
     exit 1
 fi
 
+# Check to make sure we are running on x86 as the script expects this
+if [[ "$(uname -m)" != "x86_64" ]]; then
+  echo -e "${LRED}This script uses the OpenWrt ImageBuilder for Linux x86_64; run it on an x86_64 build host.${NC}"
+  exit 1
+fi
+
 # Make sure the user running setup is a member of the sudo group
 if ! id -nG "$USER" | grep -qw "sudo"; then
     echo
