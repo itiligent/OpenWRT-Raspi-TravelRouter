@@ -54,7 +54,7 @@ You can add any number of other OpenWRT packages in the `CUSTOM_PACKGES` section
 
 ### **Step 5.** 
 
-**FROM AN x86 LINUX SYSTEM**, run the script and follow the prompts: `./raspi-travelrouter.sh`. You will be prompted for sudo, and then prompted to add custom OpenWRT config files. Copy the _**unzipped**_ contents of `base-travelrouter-raspi.tar.gz` to the (automatically created) path  `$(pwd)/openwrt_inject_files` and hit enter to start the build. 
+**FROM AN x86 LINUX SYSTEM**, run the script with `./raspi-travelrouter.sh` and follow the prompts. You will be prompted for sudo, and then prompted to add custom OpenWRT config files. Copy the _**unzipped**_ contents of `base-travelrouter-raspi.tar.gz` to the (automatically created) path  `$(pwd)/openwrt_inject_files` and hit enter to start the build. 
 
 
 ---
