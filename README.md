@@ -36,7 +36,7 @@ _(Built-in Raspi radio supports AP Mode and will be used for hotel Wifi piggybac
 
 ### **Step 3.** 
 
-Adjust the `ARCH=` & `IMAGE_PROFILE=` sections of `raspi-travelrouter.sh` to suit your Raspi hardware (script defaults build for Raspi 4).
+Adjust the `ARCH=` & `IMAGE_PROFILE=` sections of `raspi-travelrouter.sh` to suit your Raspi hardware (script default is Raspi 4).
    ```
    ARCH="????"          # Set to ARCH="bcm2710" for Raspi3, ARCH="bcm2711" for Raspi 4, ARCH="bcm2712" for Raspi 5
    IMAGE_PROFILE="???"  # Set to rpi-3, rpi-4 or rpi-5 | For available profiles run $SOURCE_DIR/make info
