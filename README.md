@@ -74,7 +74,7 @@ After first boot give your Raspi a few minutes to settle before trying to connec
 When connected, browse to http://10.1.10.1 to reach the OpenWRT Luci GUI. Use Luci to add an OpenWRT admin password and **change the SSID name to something stealthy**. 
 
  - To configure an upstream hotel wifi network as WAN, in Luci look for the **Travelmate** page.
- - If using a tethered phone or direct ethernet for WAN, internet access will automatically be shared by the travel-router's new & stealthy SSID.
+ - If using a tethered phone or direct ethernet for WAN, internet access will automatically be shared by the travel-router's SSID.
 
 ---
 
